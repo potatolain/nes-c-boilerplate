@@ -8,7 +8,7 @@ dependencies:
     # Okay, now the pieces of famitone2 we need.
     - if [ ! -f tools/famitone2/tools/text2data ]; then mkdir -p tools/famitone2-temp; fi
     - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp && wget http://shiru.untergrund.net/files/src/famitone2.zip && unzip famitone2.zip; fi
-    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/nsf2data && g++ nsf2data.cpp -o nsf2data && chmod 755 nsf2data; fi
+    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/nsf2data && sed '/^\#include \<conio\.h\>/d' nsf2data.cpp && g++ nsf2data.cpp -o nsf2data && chmod 755 nsf2data; fi
     - if [ ! -f tools/famitone2/tools/text2data ]; then mv tools/famitone2-temp/famitone2/* tools/famitone2; fi
     - mkdir -p tools/cc65/bin
     - mkdir -p tools/famitone2/tools
