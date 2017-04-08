@@ -5,23 +5,13 @@ dependencies:
     - if [ ! -f tools/cc65/bin/cc65 ]; then cd tools/cc65-temp/ && wget ftp://ftp.musoftware.de/pub/uz/cc65/cc65-sources-2.13.3.tar.bz2 && tar xvjf cc65-sources-2.13.3.tar.bz2; fi
     - if [ ! -f tools/cc65/bin/cc65 ]; then cd tools/cc65-temp/cc65-2.13.3 && make --file=make/gcc.mak; fi
     - if [ ! -f tools/cc65/bin/cc65 ]; then  mv tools/cc65-temp/cc65-2.13.3/* tools/cc65; fi
-    # Okay, now the pieces of famitone2 we need.
-    - if [ ! -f tools/famitone2/tools/text2data ]; then mkdir -p tools/famitone2-temp; fi
-    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp && wget http://shiru.untergrund.net/files/src/famitone2.zip && unzip famitone2.zip; fi
-    # The sed weirdness here blows away an include line that only works on windows, and replaces it with a define for methods we need. Gross and hacky? ABSO-FREAKING-LUTELY, but it works...
-    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/nsf2data && sed '/#include <conio\.h>/d' nsf2data.cpp -i && sed '1s;^;#define _stricmp strcmp\n;' nsf2data.cpp -i && g++ nsf2data.cpp -o nsf2data && chmod 755 nsf2data; fi
-    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/text2data && sed '/#include <conio\.h>/d' text2data.cpp -i && sed '1s;^;#define _stricmp strcmp\n;' text2data.cpp -i && g++ text2data.cpp -o text2data && chmod 755 text2data; fi
-    - if [ ! -f tools/famitone2/tools/text2data ]; then mv tools/famitone2-temp/famitone2/* tools/famitone2; fi
     - mkdir -p tools/cc65/bin
-    - mkdir -p tools/famitone2/tools
     - find tools/cc65 -type f -executable -exec cp {} tools/cc65/bin/ \;
-    - find tools/famitone2/src -type f -executable -exec cp {} tools/famitone2/tools/ \;
   override: 
     - echo Nothing else to do!
   cache_directories: 
     # Cache cc65 & famitone2 so we don't have to build it every time.
     - "tools/cc65"
-    - "tools/famitone2"
 compile: 
   override: 
     - make

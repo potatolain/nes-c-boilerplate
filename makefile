@@ -17,8 +17,13 @@ MAIN_EMULATOR=tools/fceux/fceux
 DEBUG_EMULATOR=tools/nintendulatordx/nintendulator
 SPACE_CHECKER=tools/nessc/nessc
 CONFIG_FILE=$(ROOT_DIR)/cfg/game.cfg
-TEXT2DATA=tools/famitone2/tools/text2data
-NSF2DATA=tools/famitone2/tools/nsf2data
+ifeq ($(OS),Windows_NT)
+	TEXT2DATA=tools/famitone2/tools/text2data
+	NSF2DATA=tools/famitone2/tools/nsf2data
+else
+	TEXT2DATA=echo Music compilation can only be done under Windows. There isn't a good linux/osx port. Exiting without doing anything. 
+	NSF2DATA=echo Sound effect compilation can only be done under Windows. There isn't a good linux/osx port. Exiting without doing anything.
+endif
 
 ### USER EDITABLE STUFF ENDS HERE
 
@@ -32,16 +37,14 @@ bin/%.s: %.c
 bin/%.s: src/%.c
 	$(MAIN_COMPILER) -Oi $< --add-source --include-dir ./tools/cc65/include -o $@
 
-bin/crt0.o: lib/crt0.asm bin/sfx.s bin/music.s lib/boilerplate.asm
+bin/crt0.o: lib/crt0.asm sound/sfx.s sound/music.s lib/boilerplate.asm
 	$(MAIN_ASM_COMPILER) lib/crt0.asm -o bin/crt0.o
 
-bin/sfx.s: sound/sfx.nsf
+sound/sfx.s: sound/sfx.nsf
 	$(NSF2DATA) sound/sfx.nsf -ntsc -ca65
-	mv sound/sfx.s bin/sfx.s
 
-bin/music.s: sound/music.txt
+sound/music.s: sound/music.txt
 	$(TEXT2DATA) sound/music.txt -ca65 -ntsc
-	mv sound/music.s bin/music.s
 
 bin/%.o: bin/%.s
 	$(MAIN_ASM_COMPILER) $<

@@ -242,11 +242,11 @@ detectNTSC:
 .segment "RODATA"
 
 music_data:
-	.include "bin/music.s"
+	.include "sound/music.s"
 
 	.if(FT_SFX_ENABLE)
 sounds_data:
-	.include "bin/sfx.s"
+	.include "sound/sfx.s"
 	.endif
 
 .segment "SAMPLES"

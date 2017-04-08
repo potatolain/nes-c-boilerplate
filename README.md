@@ -11,7 +11,7 @@ what you like. Happy Hacking!
 - nes_boilerplate library with helper functions that extend neslib
   - Switch PRG banks
 - famitone2 
-  - makefile-based compiling from nsf/txt files.
+  - makefile-based compiling from nsf/txt files. (Windows only)
 - makefile with commands to build, run, and more.
 - CircleCI integration (Optional)
 -- Build your ROM on every commit for free, as long as it's open source!
@@ -52,7 +52,10 @@ This repository tries to make working with famitone2/famitracker a little easier
 directly from the native format for famitracker/famitone, so any time you make changes you will have to remember
 to export them to nsf (sound effects) or txt. (music) If you extract to `sound/music.txt` and 
 `sound/sfx.nsf`, the makefile will automatically compile these into assembly. The compiled files are then included
-by the bootstrap script. (`lib/crt0.asm`)
+by the bootstrap script. (`lib/crt0.asm`) 
+
+**Important note**: This feature only works on Windows. The nsf2data and text2data tools for famitone2 are written
+for Windows, and haven't yet been ported. As such, make sure you include your music.s and sfx.s files in git. (Sorry!) 
 
 # CircleCI
 
