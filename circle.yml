@@ -9,8 +9,8 @@ dependencies:
     - if [ ! -f tools/famitone2/tools/text2data ]; then mkdir -p tools/famitone2-temp; fi
     - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp && wget http://shiru.untergrund.net/files/src/famitone2.zip && unzip famitone2.zip; fi
     # The sed weirdness here blows away an include line that only works on windows, and replaces it with a define for methods we need. Gross and hacky? ABSO-FREAKING-LUTELY, but it works...
-    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/nsf2data && sed '/#include <conio\.h>/d' nsf2data.cpp -i && sed '1s;^;#define _stricmp strcasecmp\n;' nsf2data.cpp -i && g++ nsf2data.cpp -o nsf2data && chmod 755 nsf2data; fi
-    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/text2data && sed '/#include <conio\.h>/d' text2data.cpp -i && sed '1s;^;#define _stricmp strcasecmp\n;' text2data.cpp -i && g++ text2data.cpp -o text2data && chmod 755 text2data; fi
+    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/nsf2data && sed '/#include <conio\.h>/d' nsf2data.cpp -i && sed '1s;^;#define _stricmp strcmp\n;' nsf2data.cpp -i && g++ nsf2data.cpp -o nsf2data && chmod 755 nsf2data; fi
+    - if [ ! -f tools/famitone2/tools/text2data ]; then cd tools/famitone2-temp/famitone2/src/text2data && sed '/#include <conio\.h>/d' text2data.cpp -i && sed '1s;^;#define _stricmp strcmp\n;' text2data.cpp -i && g++ text2data.cpp -o text2data && chmod 755 text2data; fi
     - if [ ! -f tools/famitone2/tools/text2data ]; then mv tools/famitone2-temp/famitone2/* tools/famitone2; fi
     - mkdir -p tools/cc65/bin
     - mkdir -p tools/famitone2/tools
