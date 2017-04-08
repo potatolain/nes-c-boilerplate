@@ -1,0 +1,1 @@
+void set_message_from_rom_1();
