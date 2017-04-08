@@ -64,7 +64,7 @@ bin/build_info.h: .FORCE
 	@printf "#define GIT_COMMIT_ID_SHORT \"$(shell git rev-parse --short HEAD)\"\n" >> bin/build_info.h
 
 # We also can get some info from environment variables in CircleCI... otherwise we kinda have to improvise a little.
-ifeq ($(shell echo $CIRCLECI), true)
+ifeq ($(CIRCLECI), true)
 	@printf "#define REPOSITORY_NAME \"$(value CIRCLE_PROJECT_REPONAME)\"\n" >> bin/build_info.h
 	@printf "#define GIT_BRANCH \"$(value CIRCLE_BRANCH)\"\n" >> bin/build_info.h
 	@printf "#define GIT_TAG \"$(value CIRCLE_TAG)\"\n" >> bin/build_info.h
