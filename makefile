@@ -69,7 +69,7 @@ ifeq ($(CIRCLECI), true)
 	@printf "#define GIT_BRANCH \"$(value CIRCLE_BRANCH)\"\n" >> bin/build_info.h
 	@printf "#define GIT_TAG \"$(value CIRCLE_TAG)\"\n" >> bin/build_info.h
 	@printf "#define BUILD_NUMBER $(value CIRCLE_BUILD_NUM)\n" >> bin/build_info.h
-	@printf "#define BUILD_NUMBER_STR \"$(value CIRCLE_BUILDNUM)\"\n" >> bin/build_info.h
+	@printf "#define BUILD_NUMBER_STR \"$(value CIRCLE_BUILD_NUM)\"\n" >> bin/build_info.h
 else
 	@printf "#define REPOSITORY_NAME \"$(ROM_NAME)\"\n" >> bin/build_info.h
 	@printf "#define GIT_BRANCH \"$(shell git symbolic-ref --short HEAD)\"\n" >> bin/build_info.h
