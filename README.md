@@ -58,7 +58,7 @@ by the bootstrap script. (`lib/crt0.asm`)
 
 This repo allows for easy integration with CircleCI if you're using a public Github repo. If you go to
 http://circleci.com and sign in, you can turn on automatic builds for it, then on each commit, CircleCI will
-build your rom using the makefile. Configuration is in `circle.yaml` in the root of the repo. 
+build your rom using the makefile. Configuration is in `circle.yml` in the root of the repo. 
 
 You can also link to the latest artifacts from your readme (or wherever) using the circleci-tkn service. Check
 that out here: https://circleci-tkn.rhcloud.com. 
