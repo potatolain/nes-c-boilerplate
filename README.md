@@ -102,7 +102,7 @@ These are things I'd like to do, but haven't taken the time yet.
 - Generate proper output for nintendulatordx based debugging
 - Support compressed nametables
 - Autogenerate a build stats header with simple build details
-  - # of commits
+  - Number of commits
   - Git branch
   - Build date
   - Maybe build # from circle (But what do we do locally?)
