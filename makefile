@@ -22,8 +22,8 @@ ifeq ($(OS),Windows_NT)
 	NSF2DATA=tools/famitone2/tools/nsf2data
 	BUILD_DATE=$(shell echo %DATE% %TIME:~0,5%)
 else
-	TEXT2DATA=echo Music compilation can only be done under Windows. There isn't a good linux/osx port. Exiting without doing anything. 
-	NSF2DATA=echo Sound effect compilation can only be done under Windows. There isn't a good linux/osx port. Exiting without doing anything.
+	TEXT2DATA=echo Music compilation can only be done under Windows. There is not a good linux/osx port. Exiting without doing anything. 
+	NSF2DATA=echo Sound effect compilation can only be done under Windows. There is not a good linux/osx port. Exiting without doing anything.
 	BUILD_DATE=$(shell date +"%a %m/%d/%Y  %H:%M")
 endif
 
