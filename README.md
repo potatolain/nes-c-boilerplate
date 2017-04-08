@@ -15,6 +15,7 @@ what you like. Happy Hacking!
 - makefile with commands to build, run, and more.
 - CircleCI integration (Optional)
 -- Build your ROM on every commit for free, as long as it's open source!
+- Auto-generated header file with build stats.
 
 # Boilerplate Functions
 
@@ -100,14 +101,6 @@ request, and I'm sure we can get something together.
 These are things I'd like to do, but haven't taken the time yet.
 - Add a prepare_cart method to strip the headers. (Cross-platform ideally)
 - Add support for multiple chr banks, a switch_chr_bank function. (Prefer 4k banks over 8)
-- Finish CircleCI support. (Rom won't build due to lack of nsf2data, etc)
-- Install scripts for cc65 and x2data to simplify non-windows installs (Since we're already figuring it out for circle)
+- Install script for cc65 to simplify non-windows installs (Since we're already figuring it out for circle)
 - Generate proper output for nintendulatordx based debugging
 - Support compressed nametables
-- Autogenerate a build stats header with simple build details
-  - Number of commits
-  - Git branch
-  - Build date
-  - Maybe build # from circle (But what do we do locally?)
-  - Maybe # of lines of code, if we can figure it out reliably.
-- Properly generate debug information for nintendulatordx

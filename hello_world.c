@@ -1,5 +1,6 @@
 #include "lib/neslib.h"
 #include "lib/boilerplate.h"
+#include "bin/build_info.h"
 #include "src/rom_0.h"
 #include "src/rom_1.h"
 
@@ -58,6 +59,11 @@ void main(void) {
 	put_str(NTADR_A(2,12), "Press A to toggle");
 	put_str(NTADR_A(2,13),"the message below.");
 	put_str(NTADR_A(2,20), "Start to toggle music");
+
+	// Also show some cool build info because we can.
+	put_str(NTADR_A(2,24), "Built: " BUILD_DATE);
+	put_str(NTADR_A(2,25), "Build #" BUILD_NUMBER_STR " (" GIT_COMMIT_ID_SHORT " - " GIT_BRANCH ")");
+	put_str(NTADR_A(2,26), "Commit counter: " COMMIT_COUNT_STR);
 	ppu_on_all();
 
 
