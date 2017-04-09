@@ -9,6 +9,10 @@
 #define ROM_0 0
 #define ROM_1 1
 
+// Ditto, same advice here.
+#define CHR_BANK_0 0
+#define CHR_BANK_1 2 // NOTE: We have two copies of the same 4k data in the 8k .chr files (because I'm lazy, ok?) so we use bank 2 to get the inverted one.
+
 #define DUMMY_SONG 0
 #define SFX_BOING 0 
 
@@ -20,6 +24,7 @@ char currentMessage[16];
 // Local to this file.
 static unsigned char showMessageA;
 static unsigned char playMusic;
+static unsigned char chrBank;
 static char screenBuffer[20];
 
 // Put a string on the screen at X/Y coordinates given in adr.
@@ -46,7 +51,7 @@ void main(void) {
 
 	showMessageA = 0;
 	playMusic = 0;
-	// Queue up our dummy song.. but don't play it until the user asks (Because it stinks)
+	// Queue up our dummy song and start playing it.
 	music_play(DUMMY_SONG);
 	music_pause(playMusic);
 
@@ -59,6 +64,7 @@ void main(void) {
 	put_str(NTADR_A(2,12), "Press A to toggle");
 	put_str(NTADR_A(2,13),"the message below.");
 	put_str(NTADR_A(2,20), "Start to toggle music");
+	put_str(NTADR_A(2,21), "Select to invert colors");
 
 	// Also show some cool build info because we can.
 	put_str(NTADR_A(2,24), "Built: " BUILD_DATE);
@@ -86,6 +92,15 @@ void main(void) {
 		if (currentPadState & PAD_START) {
 			playMusic = !playMusic;
 			music_pause(playMusic);
+		}
+
+		if (currentPadState & PAD_SELECT) {
+			if (chrBank == CHR_BANK_0)
+				chrBank = CHR_BANK_1;
+			else
+				chrBank = CHR_BANK_0;
+			set_chr_bank_0(chrBank);
+			set_chr_bank_1(chrBank+1);
 		}
 		ppu_wait_nmi();
 	}

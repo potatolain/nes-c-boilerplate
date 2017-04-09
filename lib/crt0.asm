@@ -254,8 +254,10 @@ sounds_data:
 	;.incbin "music_dpcm.bin"
 
 
-.segment "CHARS"
+.segment "CHR_0"
 	.incbin "graphics/ascii.chr"
+.segment "CHR_1"
+	.incbin "graphics/ascii-inverted.chr"
 
 ; MMC1 needs a reset stub in every bank that will put us into a known state. This defines it for all banks.
 .repeat $0f, I

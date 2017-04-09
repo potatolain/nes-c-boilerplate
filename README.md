@@ -47,6 +47,20 @@ These functions are meant to help facilitate mmc1 features such as prg bankswitc
 - **Returns**: *N/A*
 - **Description**: Returns from a temporary bank switch with `temp_switch_prg_bank(bank_id)`.
 
+### void set_chr_bank_0(unsigned char bank_id);
+- **Inputs**:
+  - bank_id: The id of the chr bank to switch to.
+- **Returns**: *N/A*
+- **Description**: Switches the first **4k** bank of chr tiles to the given bank. These are 4k banks, so if you
+                   are using 8k files (like the example) remember each file represents 2 banks, and thus 2 ids.
+
+### void set_chr_bank_1(unsigned char bank_id);
+- **Inputs**:
+  - bank_id: The id of the chr bank to switch to.
+- **Returns**: *N/A*
+- **Description**: Switches the second **4k** bank of chr tiles to the given bank. These are 4k banks, so if you
+                   are using 8k files (like the example) remember each file represents 2 banks, and thus 2 ids.
+
 
 # Working with Sound Effects and Music
 
@@ -101,7 +115,6 @@ request, and I'm sure we can get something together.
 
 These are things I'd like to do, but haven't taken the time yet.
 - Add a prepare_cart method to strip the headers. (Cross-platform ideally)
-- Add support for multiple chr banks, a switch_chr_bank function. (Prefer 4k banks over 8)
 - Install script for cc65 to simplify non-windows installs (Since we're already figuring it out for circle)
 - Generate proper output for nintendulatordx based debugging
 - Support compressed nametables

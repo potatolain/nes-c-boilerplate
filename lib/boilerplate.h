@@ -22,3 +22,9 @@ void __fastcall__ temp_switch_prg_bank(unsigned char bank_id);
 
 // Switch back to a bank after using switch_bank_temp
 void __fastcall__ temp_restore_prg_bank(void);
+
+// Set the current 1st 4k chr bank to the bank with this id.
+void __fastcall__ set_chr_bank_0(unsigned char bank_id);
+
+// Set the current 2nd 4k chr bank to the bank with this id.
+void __fastcall__ set_chr_bank_1(unsigned char bank_id);
