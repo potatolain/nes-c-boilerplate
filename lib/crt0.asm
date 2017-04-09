@@ -228,7 +228,7 @@ detectNTSC:
 	sta PPU_SCROLL
 	sta PPU_SCROLL
 
-	lda #%01111
+	lda #%11111
 	mmc1_register_write MMC1_CTRL
 	lda #0
 	mmc1_register_write MMC1_PRG

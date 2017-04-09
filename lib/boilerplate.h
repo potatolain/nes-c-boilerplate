@@ -4,6 +4,10 @@
  Implementations can be found in boilerplate.asm
  */
 
+#define MIRROR_LOWER_BANK 0
+#define MIRROR_UPPER_BANK 1
+#define MIRROR_VERTICAL 2
+#define MIRROR_HORIZONTAL 3
 
 // Switch to the given bank. Your prior bank is not saved, so be sure to save it if you need to switch back.
 // bank_id: The bank to switch to.
@@ -28,3 +32,7 @@ void __fastcall__ set_chr_bank_0(unsigned char bank_id);
 
 // Set the current 2nd 4k chr bank to the bank with this id.
 void __fastcall__ set_chr_bank_1(unsigned char bank_id);
+
+// Set the current mirroring mode. Your options are MIRROR_LOWER_BANK, MIRROR_UPPER_BANK, 
+// MIRROR_HORIZONTAL, and MIRROR_VERTICAL.
+void __fastcall__ set_mirroring(unsigned char mirroring);

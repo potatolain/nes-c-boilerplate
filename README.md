@@ -47,19 +47,28 @@ These functions are meant to help facilitate mmc1 features such as prg bankswitc
 - **Returns**: *N/A*
 - **Description**: Returns from a temporary bank switch with `temp_switch_prg_bank(bank_id)`.
 
-### void set_chr_bank_0(unsigned char bank_id);
+### void set_chr_bank_0(unsigned char bank_id)
 - **Inputs**:
   - bank_id: The id of the chr bank to switch to.
 - **Returns**: *N/A*
 - **Description**: Switches the first **4k** bank of chr tiles to the given bank. These are 4k banks, so if you
                    are using 8k files (like the example) remember each file represents 2 banks, and thus 2 ids.
 
-### void set_chr_bank_1(unsigned char bank_id);
+### void set_chr_bank_1(unsigned char bank_id)
 - **Inputs**:
   - bank_id: The id of the chr bank to switch to.
 - **Returns**: *N/A*
 - **Description**: Switches the second **4k** bank of chr tiles to the given bank. These are 4k banks, so if you
                    are using 8k files (like the example) remember each file represents 2 banks, and thus 2 ids.
+
+### void set_mirroring(unsigned char mirroring)
+- **Inputs**: 
+  - mirroring: Value to set mirroring to. The most common options are MIRROR_VERTICAL and MIRROR_HORIZONTAL.
+               If for some reason you'd like single screen mirroring, you can use either MIRROR_LOWER_BANK
+               or MIRROR_UPPER_BANK.
+- **Returns**: *N/A*
+- **Description**: MMC1 allows you to change the mirroring mode of the game on the fly. This method wraps that
+                   for you. Pass it one of the constants defined for a mirroring mode.
 
 
 # Working with Sound Effects and Music

@@ -25,6 +25,7 @@ char currentMessage[16];
 static unsigned char showMessageA;
 static unsigned char playMusic;
 static unsigned char chrBank;
+static unsigned char mirrorMode;
 static char screenBuffer[20];
 
 // Put a string on the screen at X/Y coordinates given in adr.
@@ -51,6 +52,8 @@ void main(void) {
 
 	showMessageA = 0;
 	playMusic = 0;
+	mirrorMode = MIRROR_HORIZONTAL;
+
 	// Queue up our dummy song and start playing it.
 	music_play(DUMMY_SONG);
 	music_pause(playMusic);
@@ -65,6 +68,7 @@ void main(void) {
 	put_str(NTADR_A(2,13),"the message below.");
 	put_str(NTADR_A(2,20), "Start to toggle music");
 	put_str(NTADR_A(2,21), "Select to invert colors");
+	put_str(NTADR_A(2,22), "B to switch mirroring");
 
 	// Also show some cool build info because we can.
 	put_str(NTADR_A(2,24), "Built: " BUILD_DATE);
@@ -101,6 +105,15 @@ void main(void) {
 				chrBank = CHR_BANK_0;
 			set_chr_bank_0(chrBank);
 			set_chr_bank_1(chrBank+1);
+		}
+
+		if (currentPadState & PAD_B) {
+			if (mirrorMode == MIRROR_HORIZONTAL)
+				mirrorMode = MIRROR_VERTICAL;
+			else
+				mirrorMode = MIRROR_HORIZONTAL;
+
+			set_mirroring(mirrorMode);
 		}
 		ppu_wait_nmi();
 	}
