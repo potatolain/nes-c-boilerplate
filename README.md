@@ -15,6 +15,7 @@ what you like. Happy Hacking!
 - makefile with commands to build, run, and more.
 - CircleCI integration (Optional)
 -- Build your ROM on every commit for free, as long as it's open source!
+-- CircleCI Build details available to rom at build time. Ever want to show a build number in your rom?
 - Auto-generated header file with build stats.
 
 # Boilerplate Functions
