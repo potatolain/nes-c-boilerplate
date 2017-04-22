@@ -20,7 +20,7 @@ unsigned char __fastcall__ get_prg_bank(void);
 
 // Switch to the given bank for a short period. Use with restore_bank.
 // NOTE: It is an error to call this more than once. If you can't see your restore_bank call when you do this,
-// you should probably be using switch_bank instead.'
+// you should probably be using switch_bank instead.
 // bank_id: The bank to switch to
 void __fastcall__ temp_switch_prg_bank(unsigned char bank_id);
 
