@@ -4,7 +4,7 @@ This is meant to be a quick boilerplate library for games coded in C using cc65,
 world rom that you can rename and hack at to suit your fancy. Released under the MIT license, so do with it 
 what you like. Happy Hacking!
 
-[Download Demo Rom](http://cpprograms.net/devnull/circleci-redirect.php?namespace=cppchriscpp&project=nes-c-boilerplate)
+[Download Demo Rom](http://cpprograms.net/devnull/circleci-redirect.php?namespace=cppchriscpp&project=nes-c-boilerplate&file=hello_world.nes)
 
 ## Specs/Contents
 - Neslib
