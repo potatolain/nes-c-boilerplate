@@ -91,6 +91,10 @@ build your rom using the makefile. Configuration is in `.circleci/config.yml` in
 The built NES files will be available as artifacts on the build itself. (You may need to be logged in to see 
 them.)
 
+Using a little bit of trickery with the CircleCI API, you can link users to a copy of your latest ROM directly.
+
+Look into the `tools/circle-redirect` folder for an example using PHP.
+
 # Other Useful Stuff
 
 ## VSCode keyboard shortcuts
