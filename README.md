@@ -86,13 +86,10 @@ for Windows, and haven't yet been ported. As such, make sure you include your mu
 
 This repo allows for easy integration with CircleCI if you're using a public Github repo. If you go to
 http://circleci.com and sign in, you can turn on automatic builds for it, then on each commit, CircleCI will
-build your rom using the makefile. Configuration is in `circle.yml` in the root of the repo. 
+build your rom using the makefile. Configuration is in `.circleci/config.yml` in the root of the repo. 
 
-You can also link to the latest artifacts from your readme (or wherever) using the circleci-tkn service. Check
-that out here: https://circleci-tkn.rhcloud.com. 
-
-Example from this repo: 
-[Download Rom](https://circleci-tkn.rhcloud.com/api/v1/project/cppchriscpp/nes-c-boilerplate/tree/master/latest/artifacts/hello_world.nes)
+The built NES files will be available as artifacts on the build itself. (You may need to be logged in to see 
+them.)
 
 # Other Useful Stuff
 

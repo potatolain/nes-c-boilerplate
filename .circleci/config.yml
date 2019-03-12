@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cppchriscpp/cc65-node:latest
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: 
+            - "62:d1:f8:4c:c4:bd:64:69:ca:6f:56:05:12:31:79:8d"
+      - run:
+          name: Move tools folder to expected location
+          command: cp -rf /tools .
+      - run:
+          name: Build the game itself
+          command: make
+      - store_artifacts:
+          path: ./rom
+# Optional s3 uploads - if you do this, be sure to set up secrets in the circle ui!
+#      - run: 
+#          name: Upload to version number in s3
+#          command: aws s3 cp --region us-east-1 ./rom/ld42_space.nes s3://ld42-space/$CIRCLE_BRANCH/ld42_space.$CIRCLE_BUILD_NUM.nes --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+#      - run: 
+#          name: Replace "latest" rom file in s3
+#          command: aws s3 cp --region us-east-1 ./rom/ld42_space.nes s3://ld42-space/$CIRCLE_BRANCH/ld42_space.latest.nes --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+workflows:
+  version: 2
+  build:
+    jobs: 
+      - build
