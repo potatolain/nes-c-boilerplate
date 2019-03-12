@@ -16,6 +16,9 @@ jobs:
           command: make
       - store_artifacts:
           path: ./rom
+      - run:
+          name: "???"
+          command: ls -laR
 # Optional s3 uploads - if you do this, be sure to set up secrets in the circle ui!
 #      - run: 
 #          name: Upload to version number in s3
